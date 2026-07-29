@@ -5,494 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rasyid2567 — Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #080c10;
-    --bg2: #0d1117;
-    --bg3: #161b22;
-    --border: #21262d;
-    --accent: #00ff88;
-    --accent2: #0ea5e9;
-    --accent3: #a855f7;
-    --text: #e6edf3;
-    --muted: #7d8590;
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'Space Grotesk', sans-serif;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Glow orbs */
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .orb1 { width: 500px; height: 500px; background: rgba(0,255,136,0.06); top: -150px; right: -100px; }
-  .orb2 { width: 400px; height: 400px; background: rgba(14,165,233,0.05); bottom: 100px; left: -100px; }
-  .orb3 { width: 300px; height: 300px; background: rgba(168,85,247,0.04); top: 50%; left: 50%; }
-
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 24px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: rgba(8,12,16,0.85);
-    backdrop-filter: blur(12px);
-    z-index: 100;
-  }
-  nav .inner {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo {
-    font-family: var(--mono);
-    font-size: 14px;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-  }
-  .logo span { color: var(--muted); }
-  .nav-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
-
-  /* ─── HERO ─── */
-  .hero {
-    padding: 80px 0 60px;
-    border-bottom: 1px solid var(--border);
-  }
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .hero-tag::before {
-    content: '';
-    width: 24px; height: 1px;
-    background: var(--accent);
-  }
-  .hero h1 {
-    font-size: clamp(36px, 7vw, 64px);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-  }
-  .hero h1 .highlight {
-    color: transparent;
-    -webkit-text-stroke: 1px var(--accent);
-    position: relative;
-  }
-  .hero h1 .highlight::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--accent);
-    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    animation: reveal-text 1.2s 0.5s cubic-bezier(0.77,0,0.18,1) forwards;
-  }
-  @keyframes reveal-text {
-    to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-  }
-  .hero-sub {
-    font-size: 16px;
-    color: var(--muted);
-    max-width: 480px;
-    line-height: 1.7;
-    margin-bottom: 32px;
-  }
-  .hero-sub code {
-    font-family: var(--mono);
-    color: var(--accent2);
-    font-size: 13px;
-    background: rgba(14,165,233,0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
-  .hero-btns {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .btn {
-    font-family: var(--mono);
-    font-size: 13px;
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: #000;
-    font-weight: 600;
-  }
-  .btn-primary:hover {
-    background: #00e87a;
-    transform: translateY(-1px);
-    box-shadow: 0 0 24px rgba(0,255,136,0.35);
-  }
-  .btn-ghost {
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
-  .btn-ghost:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* ─── STATS BAR ─── */
-  .stats-bar {
-    display: flex;
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 48px 0;
-    background: var(--bg2);
-  }
-  .stat {
-    flex: 1;
-    padding: 20px;
-    border-right: 1px solid var(--border);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .stat:last-child { border-right: none; }
-  .stat::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .stat:hover::before { opacity: 1; }
-  .stat-num {
-    font-family: var(--mono);
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--accent);
-    display: block;
-  }
-  .stat-label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: 4px;
-  }
-
-  /* ─── SECTION ─── */
-  section { padding: 56px 0; border-bottom: 1px solid var(--border); }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 32px;
-  }
-  .section-header h2 {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .section-header .line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-  .section-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    opacity: 0.6;
-  }
-
-  /* ─── SKILLS ─── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 10px;
-  }
-  .skill-chip {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--mono);
-    font-size: 13px;
-    transition: all 0.2s;
-    cursor: default;
-  }
-  .skill-chip:hover {
-    border-color: var(--accent);
-    background: rgba(0,255,136,0.04);
-    transform: translateY(-2px);
-  }
-  .skill-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .dot-green { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
-  .dot-blue  { background: var(--accent2); box-shadow: 0 0 6px var(--accent2); }
-  .dot-purple{ background: var(--accent3); box-shadow: 0 0 6px var(--accent3); }
-
-  /* ─── PROJECTS ─── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  @media (max-width: 600px) {
-    .projects-grid { grid-template-columns: 1fr; }
-    .stats-bar { flex-direction: column; }
-    .stat { border-right: none; border-bottom: 1px solid var(--border); }
-    .stat:last-child { border-bottom: none; }
-  }
-  .project-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: all 0.25s;
-    position: relative;
-    overflow: hidden;
-  }
-  .project-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-  .project-card:hover {
-    border-color: rgba(0,255,136,0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-  }
-  .project-card:hover::after { transform: scaleX(1); }
-  .project-name {
-    font-family: var(--mono);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--accent2);
-  }
-  .project-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: auto;
-    padding-top: 4px;
-  }
-  .tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 4px;
-    letter-spacing: 0.05em;
-  }
-  .tag-green  { background: rgba(0,255,136,0.1);  color: var(--accent); }
-  .tag-blue   { background: rgba(14,165,233,0.1); color: var(--accent2); }
-  .tag-purple { background: rgba(168,85,247,0.1); color: var(--accent3); }
-
-  /* ─── TERMINAL ABOUT ─── */
-  .terminal {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .terminal-bar {
-    background: var(--bg3);
-    padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-  .dot-r { width:10px;height:10px;border-radius:50%;background:#ff5f56; }
-  .dot-y { width:10px;height:10px;border-radius:50%;background:#ffbd2e; }
-  .dot-g { width:10px;height:10px;border-radius:50%;background:#27c93f; }
-  .terminal-title {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    margin-left: 8px;
-  }
-  .terminal-body {
-    padding: 24px;
-    font-family: var(--mono);
-    font-size: 13px;
-    line-height: 2;
-  }
-  .t-prompt { color: var(--accent); }
-  .t-cmd    { color: var(--text); }
-  .t-key    { color: var(--accent2); }
-  .t-val    { color: var(--muted); }
-  .t-str    { color: #f0c27f; }
-  .t-bool   { color: var(--accent3); }
-  .t-comment{ color: #3d4450; }
-
-  /* ─── CONTACT ─── */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-  }
-  .contact-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: all 0.2s;
-  }
-  .contact-card:hover {
-    border-color: var(--accent);
-    background: rgba(0,255,136,0.04);
-  }
-  .contact-icon {
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .contact-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .contact-value {
-    font-size: 14px;
-    color: var(--text);
-    margin-top: 2px;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    padding: 32px 0;
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-  footer span { color: var(--accent); }
-
-  /* ─── ANIMATIONS ─── */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.6s ease forwards;
-  }
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .fade-up:nth-child(1) { animation-delay: 0.1s; }
-  .fade-up:nth-child(2) { animation-delay: 0.2s; }
-  .fade-up:nth-child(3) { animation-delay: 0.3s; }
-  .fade-up:nth-child(4) { animation-delay: 0.4s; }
-
-  /* Cursor blink */
-  .cursor {
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background: var(--accent);
-    margin-left: 2px;
-    vertical-align: middle;
-    animation: blink 1s step-end infinite;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -612,7 +125,7 @@
       <div class="line"></div>
     </div>
     <div class="projects-grid">
-      <a href="https://github.com/Rasyid2567" target="_blank" class="project-card">
+      <a href="https://github.com/Rasyid2567/photo-booth" target="_blank" class="project-card">
         <div class="project-name">📸 Photo Booth App</div>
         <div class="project-desc">Real-time photo booth with WebSocket trigger, Sony camera USB integration, and Google Drive auto-upload via OAuth 2.0.</div>
         <div class="project-tags">
@@ -621,7 +134,7 @@
           <span class="tag tag-purple">Google Drive API</span>
         </div>
       </a>
-      <a href="https://github.com/Rasyid2567" target="_blank" class="project-card">
+      <a href="https://github.com/Rasyid2567/UdangStore.github.io" target="_blank" class="project-card">
         <div class="project-name">🛒 QuickShop</div>
         <div class="project-desc">Free Fire top-up website integrated with APIGames.id, deployed on Cloudflare Pages with Functions proxy to handle CORS.</div>
         <div class="project-tags">
@@ -630,7 +143,7 @@
           <span class="tag tag-purple">REST API</span>
         </div>
       </a>
-      <a href="https://github.com/Rasyid2567" target="_blank" class="project-card">
+      <a href="https://github.com/Rasyid2567Bel-Otomatis" target="_blank" class="project-card">
         <div class="project-name">🔔 Bel Otomatis</div>
         <div class="project-desc">Automatic school bell scheduler — web app + native Android APK via Capacitor with foreground service and DND bypass.</div>
         <div class="project-tags">
@@ -639,8 +152,8 @@
           <span class="tag tag-purple">Android</span>
         </div>
       </a>
-      <a href="https://github.com/Rasyid2567" target="_blank" class="project-card">
-        <div class="project-name">🧠 QuizMaster</div>
+      <a href="https://github.com/Rasyid2567Kuis-Interaktif" target="_blank" class="project-card">
+        <div class="project-name">🧠 Quiz Interaktif</div>
         <div class="project-desc">Role-based HTML quiz app with packet-based questions, per-packet scoring, and role-based login. Single-file, no dependencies.</div>
         <div class="project-tags">
           <span class="tag tag-green">HTML</span>
@@ -670,17 +183,17 @@
         </div>
       </a>
       <!-- WhatsApp -->
-      <a href="https://wa.me/yourphonenumber" target="_blank" class="contact-card">
+      <a href="https://wa.me/6285155054456" target="_blank" class="contact-card">
         <div class="contact-icon" style="background:rgba(37,211,102,0.12)">
           <svg width="20" height="20" fill="#25d366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </div>
         <div>
           <div class="contact-label">WhatsApp</div>
-          <div class="contact-value">+62 xxx-xxxx-xxxx</div>
+          <div class="contact-value">+62 851-5505-4456</div>
         </div>
       </a>
       <!-- Instagram -->
-      <a href="https://instagram.com/yourusername" target="_blank" class="contact-card">
+      <a href="https://instagram.com/syidxmc" target="_blank" class="contact-card">
         <div class="contact-icon" style="background:rgba(225,48,108,0.12)">
           <svg width="20" height="20" fill="url(#igGrad)" viewBox="0 0 24 24">
             <defs>
@@ -697,37 +210,37 @@
         </div>
         <div>
           <div class="contact-label">Instagram</div>
-          <div class="contact-value">@yourusername</div>
+          <div class="contact-value">@syidxmc</div>
         </div>
       </a>
       <!-- YouTube -->
-      <a href="https://youtube.com/@yourchannel" target="_blank" class="contact-card">
+      <a href="https://youtube.com/@Rasyid2567" target="_blank" class="contact-card">
         <div class="contact-icon" style="background:rgba(255,0,0,0.1)">
           <svg width="20" height="20" fill="#ff0000" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         </div>
         <div>
           <div class="contact-label">YouTube</div>
-          <div class="contact-value">@yourchannel</div>
+          <div class="contact-value">@Rasyid2567</div>
         </div>
       </a>
       <!-- TikTok -->
-      <a href="https://tiktok.com/@yourusername" target="_blank" class="contact-card">
+      <a href="https://tiktok.com/@syidxmc" target="_blank" class="contact-card">
         <div class="contact-icon" style="background:rgba(0,242,234,0.1)">
           <svg width="20" height="20" fill="#ffffff" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
         </div>
         <div>
           <div class="contact-label">TikTok</div>
-          <div class="contact-value">@yourusername</div>
+          <div class="contact-value">@syidxmc</div>
         </div>
       </a>
       <!-- Facebook -->
-      <a href="https://facebook.com/yourusername" target="_blank" class="contact-card">
+      <a href="https://facebook.com/syidxmc" target="_blank" class="contact-card">
         <div class="contact-icon" style="background:rgba(24,119,242,0.12)">
           <svg width="20" height="20" fill="#1877f2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </div>
         <div>
           <div class="contact-label">Facebook</div>
-          <div class="contact-value">yourusername</div>
+          <div class="contact-value">syidxmc</div>
         </div>
       </a>
       <!-- Location -->
