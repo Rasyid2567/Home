@@ -4,99 +4,128 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rasyid2567 — Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="particles" id="particles"></div>
 
-<!-- NAV -->
-<nav>
+<nav id="navbar">
   <div class="inner">
-    <div class="logo"><span>~/</span>Rasyid2567</div>
+    <div class="logo" data-text="~/Rasyid2567"><span>~/</span>Rasyid2567</div>
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
       <li><a href="#skills">skills</a></li>
       <li><a href="#projects">projects</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
+    <div class="nav-toggle" id="nav-toggle">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="container">
   <div class="hero">
-    <div class="hero-tag fade-up">Available for projects</div>
-    <h1 class="fade-up">
-      Hi, I'm<br>
-      <span class="highlight" data-text="Rasyid2567">Rasyid2567</span>
-    </h1>
-    <p class="hero-sub fade-up">
-      Web developer building things with <code>HTML/CSS/JS</code> and <code>Node.js</code>.
-      From interactive frontends to backend APIs — I ship stuff that works.
-    </p>
-    <div class="hero-btns fade-up">
-      <a href="https://github.com/Rasyid2567" target="_blank" class="btn btn-primary">
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02 0 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub Profile
-      </a>
-      <a href="#projects" class="btn btn-ghost">View Projects →</a>
+    <div class="hero-left">
+      <div class="hero-tag fade-up">Available for projects</div>
+      <h1 class="fade-up">
+        <span class="greeting">Hi, I am</span><br>
+        <span class="highlight" id="typewriter"></span><span class="cursor-blink">|</span>
+      </h1>
+      <p class="hero-sub fade-up">
+        Web developer building things with <code>HTML/CSS/JS</code> and <code>Node.js</code>.
+        From interactive frontends to backend APIs — I ship stuff that works.
+      </p>
+      <div class="hero-btns fade-up">
+        <a href="https://github.com/Rasyid2567" target="_blank" class="btn btn-primary magnetic">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02 0 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Profile
+        </a>
+        <a href="#projects" class="btn btn-ghost magnetic">View Projects →</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="code-window">
+        <div class="code-window-header">
+          <div class="code-dots"><span></span><span></span><span></span></div>
+          <span class="code-title">rasyid.js</span>
+        </div>
+        <div class="code-window-body">
+          <pre id="code-display"></pre>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- STATS -->
   <div class="stats-bar">
-    <div class="stat">
-      <span class="stat-num" id="repo-count">...</span>
+    <div class="stat" data-target="repo">
+      <span class="stat-num" id="repo-count">0</span>
       <div class="stat-label">Projects</div>
     </div>
-    <div class="stat">
-      <span class="stat-num">3+</span>
+    <div class="stat" data-target="3">
+      <span class="stat-num">0</span>
       <div class="stat-label">Years Coding</div>
     </div>
-    <div class="stat">
-      <span class="stat-num">5+</span>
+    <div class="stat" data-target="5">
+      <span class="stat-num">0</span>
       <div class="stat-label">Tech Stack</div>
     </div>
-    <div class="stat">
-      <span class="stat-num">∞</span>
-      <div class="stat-label">Curiosity</div>
+    <div class="stat" data-target="100">
+      <span class="stat-num">0</span>
+      <div class="stat-label">Curiosity %</div>
     </div>
   </div>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="section-header">
       <span class="section-num">01</span>
       <h2>about</h2>
       <div class="line"></div>
     </div>
-    <div class="terminal">
-      <div class="terminal-bar">
-        <div class="dot-r"></div>
-        <div class="dot-y"></div>
-        <div class="dot-g"></div>
-        <span class="terminal-title">about.json</span>
+    <div class="about-grid">
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <div class="dot-r"></div>
+          <div class="dot-y"></div>
+          <div class="dot-g"></div>
+          <span class="terminal-title">rasyid.json</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-comment">// whoami</span></div>
+          <div>{</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-str">"Rasyid"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"username"</span>: <span class="t-str">"Rasyid2567"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-str">"Web Developer"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-str">"Indonesia 🇮🇩"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"currently_building"</span>: <span class="t-str">"Cool stuff with Node.js"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"open_to_work"</span>: <span class="t-bool">true</span>,</div>
+          <div>&nbsp;&nbsp;<span class="t-key">"fun_fact"</span>: <span class="t-str">"I debug with console.log and I am proud of it"</span></div>
+          <div>}<span class="cursor"></span></div>
+        </div>
       </div>
-      <div class="terminal-body">
-        <div><span class="t-comment">// whoami</span></div>
-        <div>{</div>
-        <div>&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-str">"Rasyid"</span>,</div>
-        <div>&nbsp;&nbsp;<span class="t-key">"username"</span>: <span class="t-str">"Rasyid2567"</span>,</div>
-        <div>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-str">"Vibecoder"</span>,</div>
-        <div>&nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-str">"Indonesia 🇮🇩"</span>,</div>
-        <div>&nbsp;&nbsp;<span class="t-key">"currently_building"</span>: <span class="t-str">"IDK"</span>,</div>
-        <div>&nbsp;&nbsp;<span class="t-key">"open_to_work"</span>: <span class="t-bool">true</span>,</div>
-        <div>&nbsp;&nbsp;<span class="t-key">"fun_fact"</span>: <span class="t-str">"I use Arch btw"</span></div>
-        <div>}<span class="cursor"></span></div>
+      <div class="about-cards">
+        <div class="about-card reveal">
+          <div class="about-card-icon">🚀</div>
+          <h3>Fast & Efficient</h3>
+          <p>Optimizing performance and delivering smooth user experiences with clean, maintainable code.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-card-icon">🔧</div>
+          <h3>Problem Solver</h3>
+          <p>Turning complex requirements into simple, elegant solutions that just work.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-card-icon">🌐</div>
+          <h3>Full Stack</h3>
+          <p>From pixel-perfect UIs to robust backend APIs — handling the entire stack.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
     <div class="section-header">
       <span class="section-num">02</span>
@@ -104,20 +133,19 @@
       <div class="line"></div>
     </div>
     <div class="skills-grid">
-      <div class="skill-chip"><a href="https://html.spec.whatwg.org/multipage/><div class="skill-dot dot-green"></div>HTML</div></a>
-      <div class="skill-chip"><div class="skill-dot dot-blue"></div>CSS</div>
-      <div class="skill-chip"><div class="skill-dot dot-green"></div>JavaScript</div>
-      <div class="skill-chip"><div class="skill-dot dot-blue"></div>Node.js</div>
-      <div class="skill-chip"><div class="skill-dot dot-blue"></div>Python</div>
-      <div class="skill-chip"><div class="skill-dot dot-purple"></div>WebSocket</div>
-      <div class="skill-chip"><div class="skill-dot dot-green"></div>REST API</div>
-      <div class="skill-chip"><div class="skill-dot dot-purple"></div>Git</div>
-      <div class="skill-chip"><div class="skill-dot dot-green"></div>PWA</div>
-      <div class="skill-chip"><div class="skill-dot dot-blue"></div>OAuth 2.0</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-green"></div>HTML</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-blue"></div>CSS</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-green"></div>JavaScript</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-blue"></div>Node.js</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-purple"></div>WebSocket</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-green"></div>REST API</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-blue"></div>Express.js</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-purple"></div>Git</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-green"></div>PWA</div>
+      <div class="skill-chip reveal"><div class="skill-dot dot-blue"></div>OAuth 2.0</div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <div class="section-header">
       <span class="section-num">03</span>
@@ -125,55 +153,80 @@
       <div class="line"></div>
     </div>
     <div class="projects-grid">
-      <a href="https://github.com/Rasyid2567/photo-booth" target="_blank" class="project-card">
-        <div class="project-name">📸 Photo Booth App</div>
-        <div class="project-desc">Real-time photo booth with WebSocket trigger, Sony camera USB integration, and Google Drive auto-upload via OAuth 2.0.</div>
-        <div class="project-tags">
-          <span class="tag tag-green">Node.js</span>
-          <span class="tag tag-blue">WebSocket</span>
-          <span class="tag tag-purple">Google Drive API</span>
+      <a href="https://github.com/Rasyid2567/photo-booth" target="_blank" class="project-card reveal">
+        <div class="project-image">
+          <div class="project-icon">📸</div>
+          <div class="project-overlay"><span class="project-view">View Project →</span></div>
+        </div>
+        <div class="project-content">
+          <div class="project-name">Photo Booth App</div>
+          <div class="project-desc">Real-time photo booth with WebSocket trigger, Sony camera USB integration, and Google Drive auto-upload via OAuth 2.0.</div>
+          <div class="project-tags">
+            <span class="tag tag-green">Node.js</span>
+            <span class="tag tag-blue">WebSocket</span>
+            <span class="tag tag-purple">Google Drive API</span>
+          </div>
         </div>
       </a>
-      <a href="https://github.com/Rasyid2567/UdangStore.github.io" target="_blank" class="project-card">
-        <div class="project-name">🛒 QuickShop</div>
-        <div class="project-desc">Free Fire top-up website integrated with APIGames.id, deployed on Cloudflare Pages with Functions proxy to handle CORS.</div>
-        <div class="project-tags">
-          <span class="tag tag-green">HTML/CSS/JS</span>
-          <span class="tag tag-blue">Cloudflare</span>
-          <span class="tag tag-purple">REST API</span>
+      <a href="https://github.com/Rasyid2567/UdangStore.github.io" target="_blank" class="project-card reveal">
+        <div class="project-image">
+          <div class="project-icon">🛒</div>
+          <div class="project-overlay"><span class="project-view">View Project →</span></div>
+        </div>
+        <div class="project-content">
+          <div class="project-name">QuickShop</div>
+          <div class="project-desc">Free Fire top-up website integrated with APIGames.id, deployed on Cloudflare Pages with Functions proxy to handle CORS.</div>
+          <div class="project-tags">
+            <span class="tag tag-green">HTML/CSS/JS</span>
+            <span class="tag tag-blue">Cloudflare</span>
+            <span class="tag tag-purple">REST API</span>
+          </div>
         </div>
       </a>
-      <a href="https://github.com/Rasyid2567Bel-Otomatis" target="_blank" class="project-card">
-        <div class="project-name">🔔 Bel Otomatis</div>
-        <div class="project-desc">Automatic school bell scheduler — web app + native Android APK via Capacitor with foreground service and DND bypass.</div>
-        <div class="project-tags">
-          <span class="tag tag-green">JavaScript</span>
-          <span class="tag tag-blue">Capacitor</span>
-          <span class="tag tag-purple">Android</span>
+      <a href="https://github.com/Rasyid2567Bel-Otomatis" target="_blank" class="project-card reveal">
+        <div class="project-image">
+          <div class="project-icon">🔔</div>
+          <div class="project-overlay"><span class="project-view">View Project →</span></div>
+        </div>
+        <div class="project-content">
+          <div class="project-name">Bel Otomatis</div>
+          <div class="project-desc">Automatic school bell scheduler — web app + native Android APK via Capacitor with foreground service and DND bypass.</div>
+          <div class="project-tags">
+            <span class="tag tag-green">JavaScript</span>
+            <span class="tag tag-blue">Capacitor</span>
+            <span class="tag tag-purple">Android</span>
+          </div>
         </div>
       </a>
-      <a href="https://github.com/Rasyid2567Kuis-Interaktif" target="_blank" class="project-card">
-        <div class="project-name">🧠 Quiz Interaktif</div>
-        <div class="project-desc">Role-based HTML quiz app with packet-based questions, per-packet scoring, and role-based login. Single-file, no dependencies.</div>
-        <div class="project-tags">
-          <span class="tag tag-green">HTML</span>
-          <span class="tag tag-blue">CSS</span>
-          <span class="tag tag-purple">Vanilla JS</span>
+      <a href="https://github.com/Rasyid2567Kuis-Interaktif" target="_blank" class="project-card reveal">
+        <div class="project-image">
+          <div class="project-icon">🧠</div>
+          <div class="project-overlay"><span class="project-view">View Project →</span></div>
+        </div>
+        <div class="project-content">
+          <div class="project-name">Quiz Interaktif</div>
+          <div class="project-desc">Role-based HTML quiz app with packet-based questions, per-packet scoring, and role-based login. Single-file, no dependencies.</div>
+          <div class="project-tags">
+            <span class="tag tag-green">HTML</span>
+            <span class="tag tag-blue">CSS</span>
+            <span class="tag tag-purple">Vanilla JS</span>
+          </div>
         </div>
       </a>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="section-header">
       <span class="section-num">04</span>
       <h2>contact</h2>
       <div class="line"></div>
     </div>
+    <div class="contact-intro reveal">
+      <p>Let us build something amazing together. Reach out through any of these channels:</p>
+    </div>
     <div class="contact-grid">
-      <!-- GitHub -->
-      <a href="https://github.com/Rasyid2567" target="_blank" class="contact-card">
+      <a href="https://github.com/Rasyid2567" target="_blank" class="contact-card reveal">
         <div class="contact-icon" style="background:rgba(0,255,136,0.1)">
           <svg width="20" height="20" fill="#00ff88" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.8c1.02 0 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
         </div>
@@ -182,8 +235,7 @@
           <div class="contact-value">Rasyid2567</div>
         </div>
       </a>
-      <!-- WhatsApp -->
-      <a href="https://wa.me/6285155054456" target="_blank" class="contact-card">
+      <a href="https://wa.me/6285155054456" target="_blank" class="contact-card reveal">
         <div class="contact-icon" style="background:rgba(37,211,102,0.12)">
           <svg width="20" height="20" fill="#25d366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </div>
@@ -192,8 +244,7 @@
           <div class="contact-value">+62 851-5505-4456</div>
         </div>
       </a>
-      <!-- Instagram -->
-      <a href="https://instagram.com/syidxmc" target="_blank" class="contact-card">
+      <a href="https://instagram.com/syidxmc" target="_blank" class="contact-card reveal">
         <div class="contact-icon" style="background:rgba(225,48,108,0.12)">
           <svg width="20" height="20" fill="url(#igGrad)" viewBox="0 0 24 24">
             <defs>
@@ -213,8 +264,7 @@
           <div class="contact-value">@syidxmc</div>
         </div>
       </a>
-      <!-- YouTube -->
-      <a href="https://youtube.com/@Rasyid2567" target="_blank" class="contact-card">
+      <a href="https://youtube.com/@Rasyid2567" target="_blank" class="contact-card reveal">
         <div class="contact-icon" style="background:rgba(255,0,0,0.1)">
           <svg width="20" height="20" fill="#ff0000" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         </div>
@@ -223,8 +273,7 @@
           <div class="contact-value">@Rasyid2567</div>
         </div>
       </a>
-      <!-- TikTok -->
-      <a href="https://tiktok.com/@syidxmc" target="_blank" class="contact-card">
+      <a href="https://tiktok.com/@syidxmc" target="_blank" class="contact-card reveal">
         <div class="contact-icon" style="background:rgba(0,242,234,0.1)">
           <svg width="20" height="20" fill="#ffffff" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
         </div>
@@ -233,8 +282,7 @@
           <div class="contact-value">@syidxmc</div>
         </div>
       </a>
-      <!-- Facebook -->
-      <a href="https://facebook.com/syidxmc" target="_blank" class="contact-card">
+      <a href="https://facebook.com/syidxmc" target="_blank" class="contact-card reveal">
         <div class="contact-icon" style="background:rgba(24,119,242,0.12)">
           <svg width="20" height="20" fill="#1877f2" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </div>
@@ -243,8 +291,7 @@
           <div class="contact-value">syidxmc</div>
         </div>
       </a>
-      <!-- Location -->
-      <div class="contact-card" style="cursor:default">
+      <div class="contact-card reveal" style="cursor:default">
         <div class="contact-icon" style="background:rgba(14,165,233,0.1)">📍</div>
         <div>
           <div class="contact-label">Location</div>
@@ -255,50 +302,236 @@
   </section>
 
   <footer>
-    built with <span>♥</span> by <span>Rasyid2567</span> · open source on github
+    <div class="footer-content">
+      <div class="footer-line"></div>
+      <p>built with <span class="heart">♥</span> by <span class="footer-name">Rasyid2567</span></p>
+      <p class="footer-sub">open source on <a href="https://github.com/Rasyid2567" target="_blank">github</a></p>
+    </div>
   </footer>
 </div>
 
 <script>
-  // Fetch repo count from GitHub API
-  fetch('https://api.github.com/users/Rasyid2567')
-    .then(r => r.json())
-    .then(data => {
-      const el = document.getElementById('repo-count');
-      if (data.public_repos !== undefined) {
-        el.textContent = data.public_repos;
-      } else {
-        el.textContent = '—';
-      }
-    })
-    .catch(() => {
-      document.getElementById('repo-count').textContent = '—';
-    });
+// Canvas Background
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let width, height, mouseX = 0, mouseY = 0;
 
+function resize() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
 
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-    });
+const gridSize = 50;
+let points = [];
+
+function initGrid() {
+  points = [];
+  const cols = Math.ceil(width / gridSize) + 1;
+  const rows = Math.ceil(height / gridSize) + 1;
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      points.push({ x: i * gridSize, y: j * gridSize, baseX: i * gridSize, baseY: j * gridSize, vx: 0, vy: 0 });
+    }
+  }
+}
+initGrid();
+
+function drawGrid() {
+  ctx.clearRect(0, 0, width, height);
+  ctx.strokeStyle = 'rgba(0, 255, 136, 0.03)';
+  ctx.lineWidth = 0.5;
+  
+  for (let i = 0; i < points.length; i++) {
+    const p = points[i];
+    const dx = mouseX - p.x;
+    const dy = mouseY - p.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const maxDist = 200;
+    
+    if (dist < maxDist) {
+      const force = (maxDist - dist) / maxDist;
+      p.vx -= (dx / dist) * force * 2;
+      p.vy -= (dy / dist) * force * 2;
+    }
+    
+    p.vx += (p.baseX - p.x) * 0.05;
+    p.vy += (p.baseY - p.y) * 0.05;
+    p.vx *= 0.9;
+    p.vy *= 0.9;
+    p.x += p.vx;
+    p.y += p.vy;
+    
+    ctx.fillStyle = 'rgba(0, 255, 136, 0.15)';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+    
+    const col = Math.floor(p.baseX / gridSize);
+    const row = Math.floor(p.baseY / gridSize);
+    const rows = Math.ceil(height / gridSize) + 1;
+    
+    const right = points[(col + 1) * rows + row];
+    const down = points[col * rows + (row + 1)];
+    
+    if (right) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(right.x, right.y); ctx.stroke(); }
+    if (down) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(down.x, down.y); ctx.stroke(); }
+  }
+  requestAnimationFrame(drawGrid);
+}
+drawGrid();
+
+document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+
+// Typewriter
+const nameText = "Rasyid2567";
+const typewriterEl = document.getElementById('typewriter');
+let typeIndex = 0, isDeleting = false;
+
+function typeWriter() {
+  typewriterEl.textContent = nameText.substring(0, typeIndex);
+  if (!isDeleting && typeIndex < nameText.length) { typeIndex++; setTimeout(typeWriter, 120); }
+  else if (isDeleting && typeIndex > 0) { typeIndex--; setTimeout(typeWriter, 60); }
+  else { isDeleting = !isDeleting; setTimeout(typeWriter, isDeleting ? 2000 : 500); }
+}
+setTimeout(typeWriter, 800);
+
+// Code Window
+const codeLines = [
+  { text: 'const developer = {' },
+  { text: '  name: "Rasyid",' },
+  { text: '  passion: "building",' },
+  { text: '  stack: ["JS", "Node"],' },
+  { text: '  status: "available"' },
+  { text: '};' },
+  { text: '' },
+  { text: 'developer.createAwesome();' },
+];
+
+const codeDisplay = document.getElementById('code-display');
+let codeLineIdx = 0, codeCharIdx = 0;
+
+function typeCode() {
+  if (codeLineIdx >= codeLines.length) return;
+  const line = codeLines[codeLineIdx];
+  if (codeCharIdx === 0) {
+    const div = document.createElement('div');
+    div.className = 'code-line';
+    div.dataset.line = codeLineIdx + 1;
+    codeDisplay.appendChild(div);
+  }
+  const div = codeDisplay.lastElementChild;
+  div.textContent = line.text.substring(0, codeCharIdx + 1);
+  div.innerHTML = highlightCode(div.textContent);
+  codeCharIdx++;
+  if (codeCharIdx >= line.text.length) { codeLineIdx++; codeCharIdx = 0; setTimeout(typeCode, 150); }
+  else { setTimeout(typeCode, 30 + Math.random() * 40); }
+}
+
+function highlightCode(text) {
+  return text
+    .replace(/const|let|var|function|return/g, '<span class="code-keyword">$&</span>')
+    .replace(/"[^"]*"/g, '<span class="code-string">$&</span>')
+    .replace(/\b(true|false|null|undefined)\b/g, '<span class="code-bool">$&</span>')
+    .replace(/\/\/.*$/g, '<span class="code-comment">$&</span>');
+}
+
+setTimeout(typeCode, 1000);
+
+// Magnetic Buttons
+document.querySelectorAll('.magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    btn.style.transform = `translate(${(e.clientX - rect.left - rect.width / 2) * 0.2}px, ${(e.clientY - rect.top - rect.height / 2) * 0.2}px)`;
   });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0, 0)'; });
+});
 
-  // Intersection observer for subtle reveal
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
+// Fetch Repo Count
+fetch('https://api.github.com/users/Rasyid2567')
+  .then(r => r.json())
+  .then(data => {
+    if (data.public_repos !== undefined) animateCounter(document.getElementById('repo-count'), 0, data.public_repos, 1500);
+  })
+  .catch(() => { document.getElementById('repo-count').textContent = '—'; });
 
-  document.querySelectorAll('.project-card, .skill-chip, .contact-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+function animateCounter(el, start, end, duration) {
+  const startTime = performance.now();
+  function update(t) {
+    const p = Math.min((t - startTime) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(start + (end - start) * ease);
+    if (p < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// Stat Counter
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const stat = entry.target;
+      const numEl = stat.querySelector('.stat-num');
+      const target = stat.dataset.target;
+      if (target !== 'repo') animateCounter(numEl, 0, parseInt(target), 1500);
+      statObserver.unobserve(stat);
+    }
   });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat').forEach(s => statObserver.observe(s));
+
+// Scroll Reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+});
+
+// Navbar Scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.pageYOffset > 100);
+});
+
+// Mobile Nav
+const navToggle = document.getElementById('nav-toggle');
+const navLinksEl = document.querySelector('.nav-links');
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  navLinksEl.classList.toggle('active');
+});
+
+// Particles
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 20; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.top = Math.random() * 100 + '%';
+  p.style.animationDelay = Math.random() * 15 + 's';
+  p.style.animationDuration = (10 + Math.random() * 10) + 's';
+  particlesContainer.appendChild(p);
+}
+
+// 3D Tilt on Project Cards
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    card.style.transform = `perspective(1000px) rotateX(${-y / 20}deg) rotateY(${x / 20}deg) translateY(-8px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+  });
+});
 </script>
 </body>
 </html>
