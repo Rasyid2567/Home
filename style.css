@@ -6,6 +6,7 @@
     --accent: #00ff88;
     --accent2: #0ea5e9;
     --accent3: #a855f7;
+    --accent4: #ff9100;
     --text: #e6edf3;
     --muted: #7d8590;
     --mono: 'JetBrains Mono', monospace;
@@ -294,6 +295,7 @@
   .dot-green { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
   .dot-blue  { background: var(--accent2); box-shadow: 0 0 6px var(--accent2); }
   .dot-purple{ background: var(--accent3); box-shadow: 0 0 6px var(--accent3); }
+  .dot-orange{ background: var(--accent4); box-shadow: 0 0 6px var(--accent4); }
 
   /* ─── PROJECTS ─── */
   .projects-grid {
